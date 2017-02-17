@@ -28,7 +28,7 @@ public class NaturalMap extends Map{
 				if(id > 0.0f){
 					tileIndex = random.nextInt(4);
 				}else{
-					tileIndex = random.nextInt(4) + 4;
+					
 				}
 					
 				

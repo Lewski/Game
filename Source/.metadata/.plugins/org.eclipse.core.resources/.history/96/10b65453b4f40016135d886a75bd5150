@@ -1,7 +1,5 @@
 package Engine.Core.Noise;
 
-import java.util.Random;
-
 public class SimplexNoise {
 	private int[][] grad3 =  {
 			{ 1, 1, 0 }, { -1,  1, 0 }, { 1, -1,  0 }, { -1, -1,  0 },
@@ -37,15 +35,15 @@ public class SimplexNoise {
 			138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
 		};
 
-		private CraigRandom r;
+		private CraigRandom Random;
 
 		public SimplexNoise ( ) {
-			r = new CraigRandom ( ( long ) r.RandomInRange ( Integer.MIN_VALUE , Integer.MAX_VALUE ) );
+			Random = new CraigRandom ( ( long ) Random.RandomInRange ( Integer.MIN_VALUE , Integer.MAX_VALUE ) );
 			SetSeed ( );
 		}
 
 		public SimplexNoise ( long p_seed ) {
-			r = new CraigRandom ( p_seed );
+			Random = new CraigRandom ( p_seed );
 			SetSeed ( );
 		}
 
@@ -135,11 +133,11 @@ public class SimplexNoise {
 		}
 
 		public void SetSeed ( long p_seed ) {
-			r.SetSeed ( p_seed );
+			Random.SetSeed ( p_seed );
 			SetSeed ( );
 		}
 
-		Random ran = new Random();
+		Random ran = new Random;
 		
 		private void SetSeed ( ) {
 			for ( int i = 0; i < 256; i++ ) {
@@ -148,7 +146,7 @@ public class SimplexNoise {
 
 			for ( int i = 0; i < 256; i++ ) {
 				int k = perm [ i ];
-				int j = ran.nextInt(255);
+				int j = Random.RandomInRange ( 0, 256 );
 
 				perm [ i ] = perm [ j ];
 				perm [ j ] = k;

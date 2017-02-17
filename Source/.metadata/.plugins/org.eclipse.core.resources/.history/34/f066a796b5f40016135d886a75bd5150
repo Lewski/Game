@@ -1,14 +1,12 @@
 package Game.Map;
 
-import java.util.Random;
-
 import Engine.Core.Noise.SimplexNoise;
 import Engine.Core.graphics.map.Map;
 import Engine.Core.graphics.map.tile.Tile;
 
 public class NaturalMap extends Map{
 
-	private static Random random = new Random();
+	
 	
 	public NaturalMap(int width, int height) {
 		super(width, height);
@@ -25,12 +23,8 @@ public class NaturalMap extends Map{
 				
 				int tileIndex = 0;
 				
-				if(id > 0.0f){
-					tileIndex = random.nextInt(4);
-				}else{
-					tileIndex = random.nextInt(4) + 4;
-				}
-					
+				if(id > 0.0f)
+					tileIndex = 4;
 				
 				if(tileIndex == 0) tiles[x + y * width] = Tile.grass1;
 				if(tileIndex == 1) tiles[x + y * width] = Tile.grass2;

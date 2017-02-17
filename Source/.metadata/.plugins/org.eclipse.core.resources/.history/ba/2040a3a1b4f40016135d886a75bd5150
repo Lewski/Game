@@ -53,8 +53,6 @@ public class Map {
 				if(x < 0 || y < 0 || x >= width || y >= height){
 					Tile.voidTile.render(x, y, screen);
 				}else if(tiles[x + y * width] == null){
-					Tile.voidTile.render(x, y, screen);
-				}else{
 					tiles[x + y * width].render(x, y, screen);
 				}
 				
