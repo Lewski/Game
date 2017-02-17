@@ -21,7 +21,6 @@
 <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
 <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
-<fullyQualifiedTypeName name="Engine.Core.graphics.map.Map"/>
 <fullyQualifiedTypeName name="Engine.Core.graphics.map.RandomMap"/>
 <fullyQualifiedTypeName name="java.util.logging.Level"/>
 <fullyQualifiedTypeName name="Engine.Core.Cengine"/>
@@ -45,4 +44,5 @@
 <fullyQualifiedTypeName name="Game.Building.Structures"/>
 <fullyQualifiedTypeName name="Engine.Core.graphics.Sprite"/>
 <fullyQualifiedTypeName name="Engine.Core.graphics.map.tile.Structure"/>
+<fullyQualifiedTypeName name="Engine.Core.graphics.map.Map"/>
 </qualifiedTypeNameHistroy>

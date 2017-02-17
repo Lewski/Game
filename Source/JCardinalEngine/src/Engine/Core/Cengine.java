@@ -24,6 +24,7 @@ import Engine.Core.graphics.map.tile.Tile;
 import Game.Stats;
 import Game.StructuresPanel;
 import Game.Building.Structures;
+import Game.Map.NaturalMap;
 
 public class Cengine extends Canvas implements Runnable {
 
@@ -98,7 +99,7 @@ public class Cengine extends Canvas implements Runnable {
 		
 		selectedTile = new Tile(Sprite.selectedTile);
 		
-		map = new RandomMap(128,128);
+		map = new NaturalMap(128,128);
 		
 		
 		player = new Player(keyInput);

@@ -10,12 +10,13 @@ public class Map {
 	public int width;
 	public int height;
 	
-	protected int[] tiles;
+	protected Tile[] tiles;
 	
 	public Map(int width, int height){
 		this.width = width;
 		this.height = height;
-		tiles = new int[width * height];
+		
+		tiles = new Tile[width * height];
 		
 		generateMap();
 	}
@@ -49,10 +50,15 @@ public class Map {
 		for(int y = y0; y < y1; y ++){
 			for(int x = x0; x < x1; x ++){
 			
-				getTile(x, y).render(x, y, screen);
+				if(x < 0 || y < 0 || x >= width || y >= height){
+					Tile.voidTile.render(x, y, screen);
+				}else{
+					tiles[x + y * width].render(x, y, screen);
+				}
+				
+				
 			}
 		}
-		
 	}
 	
 	public Tile getTile(int x, int y){
@@ -64,11 +70,12 @@ public class Map {
 			return v;
 		}
 		
+		/*
 		if(tiles[x + y * width] == 0) return Tile.grass1;
 		if(tiles[x + y * width] == 1) return Tile.grass2;
 		if(tiles[x + y * width] == 2) return Tile.grass3;
 		if(tiles[x + y * width] == 3) return Tile.grass4;
-		
+		*/
 		return Tile.voidTile;
 	}
 	
