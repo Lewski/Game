@@ -1,5 +1,0 @@
-package Engine.Core.audio;
-
-public class AudioClip {
-
-}

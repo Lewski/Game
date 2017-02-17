@@ -1,7 +1,5 @@
 package Engine.Core.graphics.map;
 
-import java.util.Random;
-
 import Engine.Core.graphics.Screen;
 import Engine.Core.graphics.map.tile.Tile;
 

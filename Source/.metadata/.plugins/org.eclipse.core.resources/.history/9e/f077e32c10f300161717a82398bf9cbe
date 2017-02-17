@@ -1,7 +1,0 @@
-package Engine.Core.graphics.entity.character;
-
-public class Worker extends Character {
-
-	public Worker(){
-	
-}

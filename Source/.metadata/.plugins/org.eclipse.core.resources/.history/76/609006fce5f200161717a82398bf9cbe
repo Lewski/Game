@@ -1,9 +1,0 @@
-package Engine.Core.graphics.entity;
-
-public class Entity {
-
-	public int x, y;
-	private boolean removed = false;
-	protected Level level;
-	
-}

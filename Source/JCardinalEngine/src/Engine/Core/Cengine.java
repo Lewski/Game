@@ -2,9 +2,11 @@ package Engine.Core;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -13,13 +15,11 @@ import javax.swing.JFrame;
 
 import Engine.Core.UI.Label;
 import Engine.Core.UI.UserInterface;
+import Engine.Core.graphics.Graph;
 import Engine.Core.graphics.Screen;
 import Engine.Core.graphics.Sprite;
 import Engine.Core.graphics.entity.character.Player;
 import Engine.Core.graphics.map.Map;
-import Engine.Core.graphics.map.RandomMap;
-import Engine.Core.graphics.map.tile.Natural;
-import Engine.Core.graphics.map.tile.Structure;
 import Engine.Core.graphics.map.tile.Tile;
 import Game.Stats;
 import Game.StructuresPanel;
@@ -31,33 +31,30 @@ public class Cengine extends Canvas implements Runnable {
 	public static String title = "Testing Cardinal Engine";
 	public static int width = 600;
 	public static int height = width / 16 * 9;
-	public static int scale = 2;
+	public static int scale = 3;
 	
 	public Thread thread;
-	public JFrame frame;
+	public static JFrame frame;
 	private boolean running = false;
 	
-
 	public Screen screen;
 	public UserInterface ui;
+	
+	public Graph workerCountGraph;
 	
 	public KeyboardInput keyInput;
 	public MouseInput mouseInput;
 	public MouseMove mouseMove;
 	
 	public Map map;
+	
 	private Player player;
-	private Structure house1;
 	
 	private Stats statsPanel;
 	private StructuresPanel structuresPanel;
-	
-	private Natural tree1;
-	private Tile tree2;
-	private Natural tree3;
-	
+
 	private Tile selectedTile;
-	
+
 	private Label playerLabel;
 
 
@@ -71,15 +68,25 @@ public class Cengine extends Canvas implements Runnable {
 		
 		frame = new JFrame();
 		frame.add(this);
-		frame.setResizable(false);
+		//frame.setResizable(false);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
+		
+		
+		// Transparent 16 x 16 pixel cursor image.
+		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+		// Create a new blank cursor.
+		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank cursor");
+		// Set the blank cursor to the JFrame.
+		frame.getContentPane().setCursor(blankCursor);
+		
+		
+		
 		screen = new Screen(width, height);
 		ui = new UserInterface(screen);
-		
 		
 		keyInput = new KeyboardInput();
 		mouseInput = new MouseInput();
@@ -96,26 +103,18 @@ public class Cengine extends Canvas implements Runnable {
 		structuresPanel = new StructuresPanel(77, ui.height - 79, this);
 		structuresPanel.visible = true;
 		
+		workerCountGraph = new Graph(600,100, 300,100);
 		
 		selectedTile = new Tile(Sprite.selectedTile);
 		
-		map = new NaturalMap(128,128);
-		
-		
+		map = new NaturalMap(256,256);
+
 		player = new Player(keyInput);
 		player.x = (map.width / 2) * 8;
 		player.y = (map.height / 2) * 8;
 		playerLabel = new Label("Lewski", 0, 0);
 		playerLabel.color = 0xff00aaff;
-		
-		
-		house1 = new Structure(Sprite.house1);
-		
-		tree1 = new Natural(Sprite.tree1);
-		tree2 = new Natural(Sprite.tree2);
-		tree3 = new Natural(Sprite.tree3);
 	
-		
 	}
 	
 	public synchronized void start() {
@@ -133,6 +132,12 @@ public class Cengine extends Canvas implements Runnable {
 		}
 	}
 
+	int frames;
+	int updates;
+	
+	public int fps = 0;
+	public int ups = 0;
+	
 	public void run() {
 		
 		long lastTime = System.nanoTime();
@@ -140,8 +145,8 @@ public class Cengine extends Canvas implements Runnable {
 		final double ns = 1_000_000_000.0 / 60.0;
 		double delta = 0;
 		
-		int frames = 0;
-		int updates = 0;
+		frames = 0;
+		updates = 0;
 		
 		requestFocus();
 		
@@ -156,22 +161,19 @@ public class Cengine extends Canvas implements Runnable {
 				delta--;
 			}
 			
-			
 			render();
 			frames++;
 			
-			if(System.currentTimeMillis() - timer > 1000){
-				timer += 1000;
-				
-				frame.setTitle(title + "   FPS: " + frames + "   |   UPS: " + updates );
+			if(System.currentTimeMillis() - timer > 100){
+				timer += 100;
+			
+				fps = frames * 10;
 				
 				frames = 0;
 				updates = 0;
 				
 			}
-			
 		}
-		
 	}
 
 	public void update(){
@@ -187,7 +189,13 @@ public class Cengine extends Canvas implements Runnable {
 		playerLabel.xPos = player.x;
 		playerLabel.yPos = player.y;
 		
+		//workerCountGraph.addValue(fps);
+		//workerCountGraph.update();
+		
 	}
+	
+	int xStart;
+	int yStart;
 	
 	public void render(){
 		BufferStrategy bs = getBufferStrategy();
@@ -200,14 +208,21 @@ public class Cengine extends Canvas implements Runnable {
 		
 		int xScroll = player.x - screen.width / 2;
 		int yScroll = player.y - screen.height / 2;
+
 		
 		map.render(xScroll, yScroll, screen);
-		house1.render(5,5,screen);
-		tree1.render(9, 4, screen);
-		tree2.render(15, 8, screen);
-		tree3.render(16, 3, screen);
+
+		//selectedTile.render(((mouseMove.mouseX + xScroll) >> 3),((mouseMove.mouseY + yScroll) >> 3), screen);
 		
-		selectedTile.render(((mouseMove.mouseX + xScroll) >> 3)-1, (mouseMove.mouseY + yScroll - 2) >> 3, screen);
+		if(!mouseMove.isDragging){
+			xStart = ((mouseMove.mouseX + xScroll) >> 3) << 3;
+			yStart = ((mouseMove.mouseY + yScroll) >> 3) << 3;
+		}
+		
+		int xEnd = ((mouseMove.mouseX + xScroll) >> 3) << 3;
+		int yEnd = ((mouseMove.mouseY + yScroll) >> 3) << 3;
+		
+		screen.renderSelection(xStart, yStart, xEnd, yEnd);
 		
 		player.render(screen);
 		playerLabel.render(screen);
@@ -215,16 +230,26 @@ public class Cengine extends Canvas implements Runnable {
 		statsPanel.render();
 		structuresPanel.render();
 		
-		for(int i = 0; i < pixels.length; i ++){
-			pixels[i] = screen.pixels[i];
+		
+		int cursorX = mouseMove.mouseX;//(int) ((int) mouseMove.mouseX * (width / ((double)frame.getContentPane().getWidth() / (double)scale)));
+		int cursorY = mouseMove.mouseY;//(int) ((int) mouseMove.mouseY * (height / ((double)frame.getContentPane().getHeight() / (double)scale)));
+		
+		//Cursor
+		for(int y = 0; y < 8; y ++){
+			for(int x = 0; x < 8; x ++){
+				screen.drawPixel((cursorX - (x - 4)), (cursorY - (y - 4)), Sprite.cursor.pixels[x + y * 8]);
+			}
 		}
 		
+		for(int i = 0; i < pixels.length; i ++){
+			pixels[i] = screen.pixels[i];
+			
+		}
+
 		Graphics g = bs.getDrawGraphics();
 		{// All graphics here
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 			g.setColor(new Color(20,20,20));
-			g.setFont(new Font("Verdana", 0, 50));
-			//g.drawString("Player X: " + player.x + ", Player Y: " + player.y, 200, 200);
 		}
 		g.dispose();
 		bs.show();

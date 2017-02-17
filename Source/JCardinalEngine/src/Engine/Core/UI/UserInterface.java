@@ -1,5 +1,6 @@
 package Engine.Core.UI;
 
+import Engine.Core.graphics.Graph;
 import Engine.Core.graphics.Screen;
 
 public class UserInterface {
@@ -108,7 +109,7 @@ public class UserInterface {
 
 	}
 	
-public void renderButton(int xp, int yp, Button button){
+	public void renderButton(int xp, int yp, Button button){
 		
 		//top left corner
 		for(int y = 0; y < 3; y++){
@@ -268,6 +269,38 @@ public void renderButton(int xp, int yp, Button button){
 		}
 	}
 	
+	public void renderGraph(int xp, int yp, Graph  graph){
+	
+		for(int x = 0; x < graph.width; x++){
+			int xActual = xp = x;
+			
+			if(graph.values.size() <= x) break;
+			/*
+			double X = x;
+			double A = 0;
+			double B = graph.values.size();
+			double C = xp;
+			double D = xp + width;
+			
+			int xActual = (int) ((X-A) / (B-A) * (D-C) + C);
+			xActual += xp;
+			*/
+			
+			double X = graph.values.get(x);
+			double A = graph.minValue();
+			double B = graph.maxValue();
+			double C = yp + graph.height;
+			double D = yp;
+			
+			int yActual = (int) ((X-A) / (B-A) * (D-C) + C);
+			yActual += yp;
+			//yActual = graph.height - yActual;
+		
+			
+			drawPixel(xActual,yActual, graph.plotColor);
+		}
+		
+	}
 	
 	private boolean drawPixel(int x, int y, int color){
 		

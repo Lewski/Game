@@ -18,8 +18,8 @@ public class Stats {
 	
 	private ArrayList<Worker> workers = new ArrayList<Worker>();
 	
-	static int numberOfWorkers = 0;
-	static int money = 300;
+	public static int numberOfWorkers = 0;
+	public static int money = 300;
 
 	
 	
@@ -56,6 +56,9 @@ public class Stats {
 		for(Worker w : workers){
 			w.update();
 		}
+		
+		money = engine.fps;
+		moneyLabel.text = "FPS " + money;
 	}
 	
 	public void render(){

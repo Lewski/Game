@@ -7,19 +7,23 @@ public class MouseMove implements MouseMotionListener {
 
 	public int mouseX;
 	public int mouseY;
+
+	public boolean isDragging;
 	
 	public void update(){
 		//System.out.println(mouseX);
 	}
 	
 	public void mouseDragged(MouseEvent e) {
-		mouseX = e.getX() >> 1;
-		mouseY = e.getY() >> 1;
+		isDragging = true;
+		mouseX = (int) ((e.getX() / Cengine.scale) * (Cengine.width / ((double) Cengine.frame.getContentPane().getWidth() / (double) Cengine.scale)));
+		mouseY = (int) ((e.getY() / Cengine.scale) * (Cengine.width / ((double) Cengine.frame.getContentPane().getWidth() / (double) Cengine.scale)));
 	}
 
 	public void mouseMoved(MouseEvent e) {
-		mouseX = e.getX() >> 1;
-		mouseY = e.getY() >> 1;
+		isDragging = false;
+		mouseX = (int) ((e.getX() / Cengine.scale) * (Cengine.width / ((double) Cengine.frame.getContentPane().getWidth() / (double) Cengine.scale)));
+		mouseY = (int) ((e.getY() / Cengine.scale) * (Cengine.width / ((double) Cengine.frame.getContentPane().getWidth() / (double) Cengine.scale)));
 	}
 	
 }

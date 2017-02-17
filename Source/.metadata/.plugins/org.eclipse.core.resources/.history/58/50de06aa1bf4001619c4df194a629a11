@@ -1,7 +1,0 @@
-package Engine.Core.audio;
-
-import javax.sound.*;
-
-public class AudioClip {
-
-}

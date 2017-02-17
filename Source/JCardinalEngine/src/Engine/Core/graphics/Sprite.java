@@ -15,6 +15,7 @@ public class Sprite {
 	public static Sprite voidSprite = new Sprite(8, 0xff000000);
 	
 	public static Sprite selectedTile = new Sprite("/Sprite Sheets/selectedTile.png");
+	public static Sprite cursor = new Sprite("/Sprite Sheets/cursor.png");
 	
 	public static Sprite house1 = new Sprite(32, 1, 0, SpriteSheet.buildings);
 	public static Sprite building1 = new Sprite(32, 0, 0, SpriteSheet.buildings);
@@ -37,6 +38,7 @@ public class Sprite {
 	public static Sprite stone2 = new Sprite(8, 1, 1, SpriteSheet.environmentTiles);
 	public static Sprite stone3 = new Sprite(8, 1, 2, SpriteSheet.environmentTiles);
 	public static Sprite stone4 = new Sprite(8, 1, 3, SpriteSheet.environmentTiles);
+	public static Sprite stoneEdge = new Sprite(8, 2, 0, SpriteSheet.environmentTiles);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet){
 		SIZE = size;

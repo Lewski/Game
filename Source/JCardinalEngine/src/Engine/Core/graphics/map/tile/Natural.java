@@ -9,8 +9,4 @@ public class Natural extends Structure {
 		super(sprite);
 	}
 
-	public void render(int x, int y, Screen screen){
-		screen.renderStructure(x << 3, y << 3, this);
-	}
-	
 }

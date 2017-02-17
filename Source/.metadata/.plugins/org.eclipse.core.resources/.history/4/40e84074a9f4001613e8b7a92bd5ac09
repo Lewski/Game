@@ -1,7 +1,0 @@
-package Game.Map;
-
-import Engine.Core.graphics.map.Map;
-
-public class NaturalMap extends Map{
-
-}

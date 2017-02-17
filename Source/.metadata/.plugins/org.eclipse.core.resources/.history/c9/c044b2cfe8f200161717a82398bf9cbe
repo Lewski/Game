@@ -1,5 +1,0 @@
-package Engine.Core.graphics.entity.character;
-
-public class Player extends Entity{
-
-}

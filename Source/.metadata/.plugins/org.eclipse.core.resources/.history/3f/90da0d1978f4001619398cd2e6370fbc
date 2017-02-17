@@ -1,9 +1,0 @@
-package Game.Building;
-
-import java.util.ArrayList;
-
-public abstract class Structures {
-	
-	public static ArrayList<Structre> buildings = new ArrayList<Structure>();
-	
-}
