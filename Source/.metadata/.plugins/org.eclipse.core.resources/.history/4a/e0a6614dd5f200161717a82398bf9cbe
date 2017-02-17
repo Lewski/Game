@@ -1,0 +1,13 @@
+package Engine.Core.graphics;
+
+public class SpriteSheet {
+
+	private String path;
+	
+	public SpriteSheet(){
+		
+		
+		
+	}
+	
+}

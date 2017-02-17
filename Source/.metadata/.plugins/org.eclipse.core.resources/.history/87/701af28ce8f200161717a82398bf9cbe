@@ -1,0 +1,10 @@
+package Engine.Core.graphics.entity.character;
+
+import Engine.Core.graphics.*;
+import Engine.Core.graphics.entity.Entity;
+
+public abstract class Character extends Entity{
+
+	protected Sprite sprite;
+	
+}

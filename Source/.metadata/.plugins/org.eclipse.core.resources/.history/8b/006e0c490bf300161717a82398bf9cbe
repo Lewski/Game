@@ -1,0 +1,12 @@
+package Engine.Core.graphics.map.tile;
+
+import Engine.Core.graphics.Sprite;
+
+public class Structure extends Tile {
+	
+	public Structure(Sprite sprite) {
+		super(sprite);
+	}
+
+	
+}

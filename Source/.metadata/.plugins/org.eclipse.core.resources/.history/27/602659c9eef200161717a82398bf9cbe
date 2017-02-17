@@ -1,0 +1,29 @@
+package Engine.Core.graphics.entity.character;
+
+import Engine.Core.KeyboardInput;
+
+public class Player extends Character{
+
+	private KeyboardInput input;
+	
+	public Player(KeyboardInput input){
+		this.input = input;
+	}
+	
+	public Player(int x, int y, KeyboardInput input){
+		this.x = x;
+		this.y = y;
+		this.input = input;
+	}
+	
+	public void update(){
+		if(input.up) y--;
+		if(input.up) y--;
+		if(input.up) y--;
+		if(input.up) y--;
+	}
+	
+	public void render(){
+		
+	}
+}

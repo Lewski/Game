@@ -1,0 +1,9 @@
+package Game.Building;
+
+import Engine.Core.graphics.Sprite;
+
+public class StructurePlacer {
+	
+	public Sprite image;
+
+}

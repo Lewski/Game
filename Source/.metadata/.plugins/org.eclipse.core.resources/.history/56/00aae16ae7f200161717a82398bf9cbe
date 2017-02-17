@@ -1,0 +1,27 @@
+import javax.swing.JFrame;
+
+import Engine.Core.Cengine;
+
+public class TestGame {
+
+	public TestGame(){
+		
+	}
+	
+	public static void main(String [] args){
+		
+		Cengine engine = new Cengine();
+		engine.frame.setResizable(false);
+		engine.frame.setTitle(engine.title);
+		engine.frame.add(engine);
+		engine.frame.pack();
+		engine.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		engine.frame.setLocationRelativeTo(null);
+		engine.frame.setVisible(true);
+		
+		engine.start();
+		
+	}
+	
+	
+}

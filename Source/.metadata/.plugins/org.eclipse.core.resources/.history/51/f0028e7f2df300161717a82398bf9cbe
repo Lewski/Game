@@ -1,0 +1,8 @@
+package Engine.Core.UI;
+
+public class Panel {
+
+	int x, y;
+	
+	
+}

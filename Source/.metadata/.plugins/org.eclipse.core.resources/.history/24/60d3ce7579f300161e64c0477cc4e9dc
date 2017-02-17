@@ -1,0 +1,20 @@
+package Engine.Core.UI;
+
+import Engine.Core.graphics.Screen;
+
+public class Panel {
+
+	int x, y;
+	
+	public uiSprite topLeft = uiSprite ;
+	
+	public Panel(){
+		
+	}
+	
+	public void render(UserInterface ui){
+		renderPanel();
+	}
+	
+	
+}

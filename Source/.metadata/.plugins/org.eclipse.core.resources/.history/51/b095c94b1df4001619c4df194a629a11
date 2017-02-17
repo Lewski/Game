@@ -1,0 +1,23 @@
+package Engine.Core.audio;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+public class AudioClip {
+
+	public static void playSound(String fp){
+		try{
+		    AudioInputStream audioInputStream =
+		        AudioSystem.getAudioInputStream(
+		            this.getClass().getResource("<Path of relative sound file in src folder>"));
+		    Clip clip = AudioSystem.getClip();
+		    clip.open(audioInputStream);
+		    clip.start();
+		}
+		catch(Exception ex)
+		{
+		}
+	}
+	
+}

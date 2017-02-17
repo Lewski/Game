@@ -1,0 +1,11 @@
+package Engine.Core.UI;
+
+import Engine.Core.graphics.SpriteSheet;
+
+public class uiSpriteSheet extends SpriteSheet{
+
+	public uiSpriteSheet(String path, int size) {
+		super(path, size);
+	}
+
+}

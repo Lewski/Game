@@ -1,0 +1,21 @@
+package Engine.Core.graphics.entity.character;
+
+public class Player extends Character{
+
+	public Player(){
+		
+	}
+	
+	public Player(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+	
+	public void update(){
+		
+	}
+	
+	public void render(){
+		
+	}
+}

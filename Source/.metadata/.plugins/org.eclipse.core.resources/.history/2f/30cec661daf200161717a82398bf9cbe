@@ -1,0 +1,12 @@
+package Engine.Core.graphics.map.tile;
+
+public class Tile {
+
+	public int x, y;
+	public Sprite sprite;
+	
+	public Tile(Sprite sprite){
+		this.sprite = sprite;
+	}
+	
+}

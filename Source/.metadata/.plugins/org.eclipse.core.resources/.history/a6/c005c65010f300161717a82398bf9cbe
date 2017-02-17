@@ -1,0 +1,21 @@
+package Engine.Core.graphics.entity.character;
+
+import Engine.Core.graphics.Screen;
+
+public class Worker extends Character {
+
+	int destinationX;
+	int destinationY;
+	
+	public Worker(){
+		
+	}
+	
+	
+	
+	public void render(Screen screen){
+		
+	}
+	
+	
+}

@@ -1,0 +1,54 @@
+package Game;
+
+import Engine.Core.UI.Button;
+import Engine.Core.UI.Label;
+import Engine.Core.UI.Panel;
+import Engine.Core.UI.UserInterface;
+import Engine.Core.UI.uiSprite;
+
+public class Stats {
+
+	public boolean visible;
+	public UserInterface ui;
+
+	int numberOfWorkers = 0;
+	int money = 300;
+
+	
+	
+	//UI
+	Panel infoPanel = new Panel(75, ui.height - 2,1,1,uiSprite.panel);
+
+	Label moneyLabelTitle = new Label("Money",10, 32);
+	Label moneyLabel = new Label("0", 10, 43);
+	
+	Label workersLabel = new Label("Workers",10,10);
+	Label workerCount = new Label("0", 10,21);
+	
+	
+	
+	public Stats(UserInterface ui){
+		
+		this.ui = ui;
+		
+		workersLabel.color = 0xffff8800;
+		moneyLabelTitle.color = 0xffff8800;
+	}
+	public void update(){
+		
+	}
+	
+	public void render(){
+		if(visible){
+			
+			infoPanel.render(ui);
+			
+			moneyLabelTitle.render(ui);
+			moneyLabel.render(ui);
+			
+			workersLabel.render(ui);
+			workerCount.render(ui);
+		}
+	}
+	
+}

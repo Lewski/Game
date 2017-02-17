@@ -1,0 +1,10 @@
+package Engine.Core.UI;
+
+
+public class uiSpriteSheet {
+
+	public uiSpriteSheet(String path) {
+		super(path, size);
+	}
+
+}

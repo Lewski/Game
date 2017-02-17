@@ -1,0 +1,7 @@
+package Engine.Core.graphics.entity;
+
+public class Entity {
+
+	public int x, y;
+	
+}

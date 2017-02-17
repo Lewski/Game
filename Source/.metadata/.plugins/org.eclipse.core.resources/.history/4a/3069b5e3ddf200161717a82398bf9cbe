@@ -1,0 +1,11 @@
+package Engine.Core.graphics.map.tile;
+
+import Engine.Core.graphics.Sprite;
+
+public class VoidTile extends Tile  {
+
+	public VoidTile(Sprite sprite) {
+		super(sprite);
+	}
+
+}

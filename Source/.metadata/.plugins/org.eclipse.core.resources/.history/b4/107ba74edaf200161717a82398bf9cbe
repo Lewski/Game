@@ -1,0 +1,9 @@
+package Engine.Core.graphics.map.tile;
+
+public class Tile {
+
+	public Tile(){
+		
+	}
+	
+}

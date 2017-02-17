@@ -1,0 +1,7 @@
+package Game.Building;
+
+public abstract class Structures {
+	
+	public static ArrayList<Structre> buildings = new ArrayList<Structure>();
+	
+}

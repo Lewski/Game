@@ -1,0 +1,7 @@
+package Game.Building;
+
+public class StructurePlacer {
+	
+	public Sprite image;
+
+}

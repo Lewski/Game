@@ -1,0 +1,7 @@
+package Engine.Core.UI;
+
+import Engine.Core.graphics.SpriteSheet;
+
+public class uiSpriteSheet extends SpriteSheet{
+
+}

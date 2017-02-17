@@ -1,0 +1,26 @@
+package Engine.Core.graphics;
+
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+
+public class SpriteSheet {
+
+	private String path;
+	private final int SIZE;
+	public int[] pixels;
+	
+	public SpriteSheet(String path, int size){
+		
+		this.path = path;
+		this.SIZE = size;
+		
+		pixels = new int[size * size];
+		
+	}
+	
+	private void load(){
+		BufferedImage image = ImageIO.read(SpriteSheet.class.getResource(path);
+	}
+	
+}

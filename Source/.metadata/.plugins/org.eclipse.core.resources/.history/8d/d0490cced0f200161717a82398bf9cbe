@@ -1,0 +1,9 @@
+package Engine.Core.graphics;
+
+public class Camera {
+
+	public Camera(){
+		
+	}
+	
+}

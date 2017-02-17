@@ -1,0 +1,5 @@
+package Engine.Core.graphics.map.tile.Tile;
+
+public class Structure extends Tile{
+
+}

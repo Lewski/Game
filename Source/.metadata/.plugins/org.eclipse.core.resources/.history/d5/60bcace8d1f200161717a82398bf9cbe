@@ -1,0 +1,10 @@
+package Engine.Core.graphics;
+
+public class Tile {
+
+	int x;
+	int y;
+	
+	public Tile()
+	
+}

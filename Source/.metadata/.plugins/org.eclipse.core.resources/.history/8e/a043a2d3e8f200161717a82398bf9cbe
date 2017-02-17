@@ -1,0 +1,7 @@
+package Engine.Core.graphics.entity.character;
+
+import Engine.Core.graphics.entity.Entity;
+
+public class Player extends Character{
+
+}

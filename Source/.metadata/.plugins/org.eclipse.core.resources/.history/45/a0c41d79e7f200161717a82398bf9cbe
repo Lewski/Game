@@ -1,0 +1,21 @@
+import javax.swing.JFrame;
+
+import Engine.Core.Cengine;
+
+public class TestGame {
+
+	public TestGame(){
+		
+	}
+	
+	public static void main(String [] args){
+		
+		Cengine engine = new Cengine();
+		
+		
+		engine.start();
+		
+	}
+	
+	
+}

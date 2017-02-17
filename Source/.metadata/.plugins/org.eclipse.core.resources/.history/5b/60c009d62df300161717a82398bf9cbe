@@ -1,0 +1,16 @@
+package Engine.Core.UI;
+
+public class Panel {
+
+	int x, y;
+	
+	public Panel(){
+		
+	}
+	
+	public void render(Screen screen){
+		
+	}
+	
+	
+}

@@ -1,0 +1,21 @@
+package Engine.Core.UI;
+
+import Engine.Core.graphics.Screen;
+
+public class Label {
+
+	public String text = "Hello World";
+	public uiSprite[] sprites;
+	public int xPos, yPos;
+	
+	public Label(String text, int x, int y){
+		this.text = text;
+		this.xPos = x;
+		this.yPos = y;
+	}
+	
+	public void render(Screen screen){
+		screen.renderText(100, 100, text, color);
+	}
+	
+}

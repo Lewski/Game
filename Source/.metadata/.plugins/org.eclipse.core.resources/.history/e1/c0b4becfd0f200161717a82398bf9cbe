@@ -1,0 +1,11 @@
+package Engine.Core.graphics;
+
+public class Camera {
+
+	public int zoom = 1.0f;
+	
+	public Camera(){
+		
+	}
+	
+}

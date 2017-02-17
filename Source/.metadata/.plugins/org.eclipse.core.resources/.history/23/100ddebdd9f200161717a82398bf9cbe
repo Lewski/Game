@@ -1,0 +1,13 @@
+package Engine.Core.graphics;
+
+public class RandomMap extends Map {
+
+	public RandomMap(int width, int height) {
+		super(width, height);
+	}
+
+	private void generateLevel(){
+		
+	}
+	
+}
